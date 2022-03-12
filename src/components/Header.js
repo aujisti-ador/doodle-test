@@ -6,7 +6,7 @@ const Header = () => {
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href='/'>Blog</Navbar.Brand>
+                    <Navbar.Brand href='/'>Home</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/favourite">Favourite Post</Nav.Link>
                     </Nav>

@@ -8,8 +8,9 @@ import {
 } from "react-router-dom";
 import { Button, Card } from 'react-bootstrap';
 import Header from './components/Header';
-import Home from './components/Home';
-import Favourite from './components/Favourite';
+import Home from './screens/Home';
+import Favourite from './screens/Favourite';
+import Details from './screens/Details';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favourite" element={<Favourite />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
       </Router>
     </>

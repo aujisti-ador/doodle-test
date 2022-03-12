@@ -1,0 +1,14 @@
+.Container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    /* background-color: aquamarine; */
+}
+
+.Post {
+    display: flex;
+    flex: .5;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+}
