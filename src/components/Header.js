@@ -6,9 +6,9 @@ const Header = () => {
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home">Blog</Navbar.Brand>
+                    <Navbar.Brand href='/'>Blog</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Saved Post</Nav.Link>
+                        <Nav.Link href="/favourite">Favourite Post</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
