@@ -5,7 +5,9 @@ import {
     BLOG_POST_FAIL,
     BLOG_POST_DETAILS_REQUEST,
     BLOG_POST_DETAILS_SUCCESS,
-    BLOG_POST_DETAILS_FAIL
+    BLOG_POST_DETAILS_FAIL,
+    ADD_BLOG_FAVOURITE,
+    GET_BLOG_FAVOURITE
 } from '../constants/blogActionCreaters'
 
 export const blogPost = () => async (dispatch) => {
@@ -47,4 +49,17 @@ export const blogPostDetails = (id) => async (dispatch) => {
             payload: error.message
         })
     }
+}
+
+export const addFavouritePost = (data) => (dispatch) => {
+    dispatch({
+        type: ADD_BLOG_FAVOURITE,
+        payload: data
+    })
+
+}
+export const getFavouritePost = () => (dispatch) => {
+    dispatch({
+        type: GET_BLOG_FAVOURITE
+    })
 }

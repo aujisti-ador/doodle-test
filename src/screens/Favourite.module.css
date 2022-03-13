@@ -1,0 +1,7 @@
+.Container {
+    display: flex;
+    flex: 1;
+    margin: 10px;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+  }

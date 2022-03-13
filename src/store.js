@@ -6,13 +6,15 @@ import {
 import thunk from 'redux-thunk'
 import {
     blogPostReducer,
-    blogPostDetailsReducer
+    blogPostDetailsReducer,
+    getFavouritePostReducer
 } from './reducers/blogPostReducers.js'
 import initialState from './initialState'
 
 const reducer = combineReducers({
     blogPost: blogPostReducer,
-    blogPostDetails: blogPostDetailsReducer
+    blogPostDetails: blogPostDetailsReducer,
+    favouritePost: getFavouritePostReducer
 })
 
 const middleware = [thunk]

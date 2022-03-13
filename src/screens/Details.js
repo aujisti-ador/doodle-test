@@ -23,8 +23,8 @@ function Details() {
     }
 
     useEffect(() => {
-        dispatch(blogPost()).then(() => filterPost())
         dispatch(blogPostDetails(id))
+        dispatch(blogPost()).then(() => filterPost())
     }, [dispatch, id])
 
     return (
