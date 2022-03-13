@@ -11,6 +11,8 @@ function Home() {
     const dispatch = useDispatch()
     const blogPostList = useSelector(state => state.blogPost)
     const { loading, error, blogPostData } = blogPostList
+    // const fav = useSelector(state => state.favouritePost)
+    // const { data } = fav
 
     const handleFavourite = (data) => {
         console.log(data)

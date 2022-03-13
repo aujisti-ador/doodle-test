@@ -22,6 +22,10 @@ function Details() {
         setPost(filterData[0])
     }
 
+    // useEffect(() => {
+    //     dispatch(blogPost()).then(() => filterPost())
+    // }, [post])
+
     useEffect(() => {
         dispatch(blogPostDetails(id))
         dispatch(blogPost()).then(() => filterPost())
