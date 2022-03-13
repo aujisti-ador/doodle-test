@@ -6,7 +6,6 @@ import {
   Link,
   Routes
 } from "react-router-dom";
-import { Button, Card } from 'react-bootstrap';
 import Header from './components/Header';
 import Home from './screens/Home';
 import Favourite from './screens/Favourite';
