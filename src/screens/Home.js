@@ -4,6 +4,7 @@ import { Button, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { blogPost } from '../actions/blogPostActions';
 import Loader from '../components/Loader';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
@@ -17,23 +18,6 @@ function Home() {
 
     return (
         <div className={styles.Container}>
-            {/* {data.map(blogData => (
-                <Card key={blogData.id} style={{ width: '18rem', marginBottom: '1rem' }}>
-                    <Card.Body>
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'space-between'
-                        }}>
-                            <Card.Title>{blogData.title}</Card.Title>
-                            <img src='./star.png' onClick={() => console.log('HEre')} style={{ height: 25, width: 25 }} alt="Logo" />
-                        </div>
-                        <Card.Text>
-                            {blogData.body}
-                        </Card.Text>
-                        <Button variant="primary">See details...</Button>
-                    </Card.Body>
-                </Card>
-            ))} */}
             {loading ? <Loader /> :
                 blogPostData.map(blogData => (
                     <Card key={blogData.id} style={{ width: '18rem', marginBottom: '1rem' }}>
@@ -48,7 +32,9 @@ function Home() {
                             <Card.Text>
                                 {blogData.body}
                             </Card.Text>
-                            <Button variant="primary">See details...</Button>
+                            <Link to={`/details/${blogData.id}`}>
+                                <Button variant="primary">See details...</Button>
+                            </Link>
                         </Card.Body>
                     </Card>
                 ))
