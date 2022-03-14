@@ -8,12 +8,14 @@ import {
     blogPostReducer,
     blogPostDetailsReducer,
     getFavouritePostReducer,
-    addFavouritePostReducer
+    addFavouritePostReducer,
+    blogPostByIdReducer
 } from './reducers/blogPostReducers.js'
 import initialState from './initialState'
 
 const reducer = combineReducers({
     blogPost: blogPostReducer,
+    blogPostById: blogPostByIdReducer,
     blogPostDetails: blogPostDetailsReducer,
     favouritePost: getFavouritePostReducer,
     addFavouritePost: addFavouritePostReducer

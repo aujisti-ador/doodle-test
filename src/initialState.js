@@ -4,6 +4,11 @@ const initialState = {
         error: false,
         blogPostData: []
     },
+    blogPostById: {
+        loading: true,
+        error: false,
+        blogPostId: {}
+    },
     blogPostDetails: {
         loading: true,
         error: false,

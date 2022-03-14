@@ -7,7 +7,10 @@ import {
     BLOG_POST_DETAILS_SUCCESS,
     BLOG_POST_DETAILS_FAIL,
     ADD_BLOG_FAVOURITE,
-    GET_BLOG_FAVOURITE
+    GET_BLOG_FAVOURITE,
+    BLOG_POST_REQUEST_ID,
+    BLOG_POST_SUCCESS_ID,
+    BLOG_POST_FAIL_ID
 } from '../constants/blogActionCreaters'
 
 export const blogPost = () => async (dispatch) => {
@@ -16,7 +19,7 @@ export const blogPost = () => async (dispatch) => {
             type: BLOG_POST_REQUEST
         })
 
-        const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+        const { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
 
         dispatch({
             type: BLOG_POST_SUCCESS,
@@ -31,8 +34,29 @@ export const blogPost = () => async (dispatch) => {
     }
 
 }
+export const blogPostByIdAction = (id) => async (dispatch) => {
+    try {
+        dispatch({
+            type: BLOG_POST_REQUEST_ID
+        })
 
-export const blogPostDetails = (id) => async (dispatch) => {
+        const { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        console.log('from action', data)
+        dispatch({
+            type: BLOG_POST_SUCCESS_ID,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: BLOG_POST_FAIL_ID,
+            payload: error.message
+        })
+    }
+
+}
+
+export const blogPostDetailsAction = (id) => async (dispatch) => {
     try {
         dispatch({
             type: BLOG_POST_DETAILS_REQUEST
