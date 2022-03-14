@@ -11,13 +11,9 @@ function Details() {
     const dispatch = useDispatch()
     const blogPostDetailsList = useSelector(state => state.blogPostDetails)
     const idData = useSelector(state => state.blogPostById)
-    // const { loading: idLoader, error: e, blogPostId } = idData
+    const { loading: idLoader, error: e, blogPostId } = idData
     const { loading, error, blogPostDetailsData } = blogPostDetailsList
 
-    useEffect(() => {
-        console.log(idData)
-        // console.log(blogPostDetailsData)
-    })
 
     useEffect(() => {
         dispatch(blogPostDetailsAction(id))
@@ -26,19 +22,27 @@ function Details() {
         // console.log(blogPostDetailsData)
     }, [dispatch, id])
 
+    useEffect(() => {
+        console.log(idData)
+        console.log(blogPostDetailsData)
+    }, [idData])
+
     return (
         <div className={styles.Container}>
             <div className={styles.Post}>
-                <div style={{
-                    flexDirection: 'row'
-                }}>
-                    <img src={require('../assets/account.png')} style={{
-                        heigt: 30,
-                        width: 30
-                    }} />
-                    {/* <h4>{idData.blogPostId.title || 'loading...'}</h4> */}
-                </div>
-                {/* <h6>{idData.blogPostId.body || 'loading...'}</h6> */}
+                {idLoader ? <Loader /> : <div>
+
+                    <div style={{
+                        flexDirection: 'row'
+                    }}>
+                        <img src={require('../assets/account.png')} style={{
+                            heigt: 30,
+                            width: 30
+                        }} />
+                        <h4>{blogPostId.title || 'loading...'}</h4>
+                    </div>
+                    <h6>{blogPostId.body || 'loading...'}</h6>
+                </div>}
                 {
                     loading ? <Loader /> :
                         blogPostDetailsData.map((blogPostDetail) => (

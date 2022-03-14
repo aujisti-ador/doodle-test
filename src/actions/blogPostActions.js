@@ -41,7 +41,7 @@ export const blogPostByIdAction = (id) => async (dispatch) => {
         })
 
         const { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-        console.log('from action', data)
+        // console.log('from action', data)
         dispatch({
             type: BLOG_POST_SUCCESS_ID,
             payload: data
