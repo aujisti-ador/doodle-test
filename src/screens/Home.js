@@ -12,27 +12,24 @@ function Home() {
     const blogPostList = useSelector(state => state.blogPost)
     const { loading, error, blogPostData } = blogPostList
 
-
     const setInLocalStorage = (data) => {
-        let dataObject
-        if (localStorage.getItem('fav') === null) {
-            dataObject = []
+        var a = [];
+        a = JSON.parse(localStorage.getItem('session')) || [];
+        const index = a.map(object => object.id).indexOf(data.id);
+        if (index < 0) {
+            a.push(data);
         } else {
-            dataObject = JSON.parse(localStorage.getItem('fav'))
+            a.splice(index, 1)
         }
-        if (dataObject.includes(data)) {
-            dataObject.splice(dataObject.findIndex(e => e == data), 1)
-        } else {
-            dataObject.push(data)
-        }
-        localStorage.setItem('fav', JSON.stringify(dataObject))
-        console.log('==>', JSON.parse(localStorage.getItem('fav')))
+        localStorage.setItem('session', JSON.stringify(a));
+
     }
 
 
     const handleFavourite = (data) => {
-        console.log('from click==>', data)
+        // console.log('from click==>', data)
         setInLocalStorage(data)
+        alert('Favoutite list updated')
     }
 
     useEffect(() => {

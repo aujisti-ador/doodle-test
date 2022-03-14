@@ -8,10 +8,31 @@ import { Link } from 'react-router-dom';
 
 function Favourite() {
     const [favPost, setFavPost] = useState(null);
+    const [reload, setReload] = useState(false)
+
+    const setInLocalStorage = (data) => {
+        var a = [];
+        a = JSON.parse(localStorage.getItem('session')) || [];
+        const index = a.map(object => object.id).indexOf(data.id);
+        if (index < 0) {
+            a.push(data);
+        } else {
+            a.splice(index, 1)
+        }
+        localStorage.setItem('session', JSON.stringify(a));
+
+    }
+
+    const handleFavourite = (data) => {
+        // console.log('from click==>', data)
+        setInLocalStorage(data)
+        alert('Removed from favourite list')
+        setReload(!reload)
+    }
 
     useEffect(() => {
-        setFavPost(JSON.parse(localStorage.getItem('fav')))
-    }, []);
+        setFavPost(JSON.parse(localStorage.getItem('session')))
+    }, [reload]);
 
     return (
         <div>
@@ -27,7 +48,7 @@ function Favourite() {
                                 }}>
                                     <Card.Title>{blogData.title}</Card.Title>
                                     <img src={require('../assets/star.png')}
-                                        onClick={() => console.log('HEre')}
+                                        onClick={() => handleFavourite(blogData)}
                                         style={{ height: 25, width: 25 }} alt="Logo" />
                                 </div>
                                 <Card.Text>
