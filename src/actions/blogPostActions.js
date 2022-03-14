@@ -74,16 +74,3 @@ export const blogPostDetailsAction = (id) => async (dispatch) => {
         })
     }
 }
-
-export const addFavouritePost = (data) => (dispatch) => {
-    dispatch({
-        type: ADD_BLOG_FAVOURITE,
-        payload: data
-    })
-
-}
-export const getFavouritePost = () => (dispatch) => {
-    dispatch({
-        type: GET_BLOG_FAVOURITE
-    })
-}

@@ -79,26 +79,3 @@ export const blogPostDetailsReducer = (state = initialState.blogPostDetails, act
             return state
     }
 }
-
-export const addFavouritePostReducer = (state = initialState, action) => {
-    // console.log('>', action.type)
-    // console.log('===>', state.favouritePost)
-    switch (action.type) {
-        case ADD_BLOG_FAVOURITE:
-            return {
-                ...state,
-                favouritePost: [...state.favouritePost, action.payload]
-            }
-        default:
-            return state
-    }
-}
-
-export const getFavouritePostReducer = (state = initialState.favouritePost, action) => {
-    switch (action.type) {
-        case GET_BLOG_FAVOURITE:
-            return state
-        default:
-            return state
-    }
-}
