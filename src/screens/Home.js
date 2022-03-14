@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Home.module.css'
 import { Button, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,12 +11,28 @@ function Home() {
     const dispatch = useDispatch()
     const blogPostList = useSelector(state => state.blogPost)
     const { loading, error, blogPostData } = blogPostList
-    // const fav = useSelector(state => state.favouritePost)
-    // const { data } = fav
+
+
+    const setInLocalStorage = (data) => {
+        let dataObject
+        if (localStorage.getItem('fav') === null) {
+            dataObject = []
+        } else {
+            dataObject = JSON.parse(localStorage.getItem('fav'))
+        }
+        if (dataObject.includes(data)) {
+            dataObject.splice(dataObject.findIndex(e => e == data), 1)
+        } else {
+            dataObject.push(data)
+        }
+        localStorage.setItem('fav', JSON.stringify(dataObject))
+        console.log('==>', JSON.parse(localStorage.getItem('fav')))
+    }
+
 
     const handleFavourite = (data) => {
-        console.log(data)
-        dispatch(addFavouritePost(data))
+        console.log('from click==>', data)
+        setInLocalStorage(data)
     }
 
     useEffect(() => {
@@ -34,7 +50,10 @@ function Home() {
                                 justifyContent: 'space-between'
                             }}>
                                 <Card.Title>{blogData.title}</Card.Title>
-                                <img src='./star.png' onClick={() => handleFavourite(blogData)} style={{ height: 25, width: 25 }} alt="Logo" />
+                                <img src={require('../assets/star.png')}
+                                    onClick={() => handleFavourite(blogData)}
+                                    style={{ height: 25, width: 25 }}
+                                    alt="Logo" />
                             </div>
                             <Card.Text>
                                 {blogData.body}
